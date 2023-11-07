@@ -2,7 +2,7 @@ from flask import Flask, Blueprint
 import sqlite3 as sql
 import os
 
-database_blueprint = Blueprint('database', __name__, template_folder='templates')
+database_blueprint = Blueprint('database', __name__,)
 
 #Conexão com o banco de dados
 def get_db_conexao():
