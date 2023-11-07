@@ -3,9 +3,258 @@
 {% block botao %}
 
 {% if logado == False %}
-<a href="/login"><button type="button" class="btn btn-light me-4">Login</button></a>
+<a href="/login"><button type="submit" class="btn btn-light me-4">Login</button></a>
 {% else %}
-<a href="/logoff"><button type="button" class="btn btn-light me-4">Logoff</button></a>
+<a href="/logoff"><button type="submit" class="btn btn-light me-4">Logoff</button></a>
 {% endif %}
 
+{% endblock %}
+
+
+{% block conteudo %}
+<!-- Carrossel automático -->
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+            <img src="../../static/img/slides/slide01.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+            <img src="../../static/img/slides/slide02.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+            <img src="../../static/img/slides/slide03.jpg" class="d-block w-100" alt="...">
+        </div>
+    </div>
+</div>
+<!-- Fim do carrossel -->
+<!-- Cards -->
+
+    <div class="container-fluid my-5">
+        <h1 class="text-center">Promoções da Semana</h1>
+    </div>
+
+    <div class="container">
+    <div class="row g-5">
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000001.jpg" class="card-img-top b-2">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Banana nana</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000002.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Abaxaki</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000003.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Mão</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000004.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Çamã</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000005.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Gororoba</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000006.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Milão</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000007.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Bacamarte</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000008.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Avocado</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000009.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Cambutiã</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000010.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Abobinha</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000011.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Repoio</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000012.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Lhoa</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000001.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Banana Burro</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000001.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Banana Cavendish</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000001.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Banana Prata</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000001.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Banana Maçã</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000001.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Banana Plantain</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000001.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Banana Manzano</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000001.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Banana Blue Java</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 col-md-6">
+            <div class="card text-bg-light border-primary" >
+                <img src="../../static/img/produtos/000001.jpg" class="card-img-top">
+                <div class="card-body">
+                    <p class="card-title text-center fw-bolder fs-4">Banana Platano</p>
+                    <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
+                        of the card's content.</p>
+                        <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
