@@ -1,1 +1,11 @@
 {% extends 'modelo.html' %}
+
+{% block botao %}
+
+{% if logado == False %}
+<button type="button" class="btn btn-light me-4">Login</button>
+{% else %}
+<button type="button" class="btn btn-light me-4">Logoff</button>
+{% endif %}
+
+{% endblock %}
