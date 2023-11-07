@@ -55,11 +55,15 @@ Para configurar e executar o projeto em sua máquina local, siga estas etapas:
 ## Estrutura do Projeto
 
 
-- `main.py`: O código principal do aplicativo Flask.
+- `app.py`: O código principal do aplicativo Flask.
 - `templates/`: Diretório contendo os modelos HTML.
 - `static/`: Diretório contendo arquivos estáticos, como CSS e imagens.
-- `db_quitanda.py`: Arquivo com dados iniciais de produtos.
-
+- `database/`: Diretório contendo os arquivos referentes ao banco de dados.
+- `esquema.sql`: Arquivo com dados iniciais de produtos.
+- `home/`: Diretório contendo os arquivos referentes à página principal.
+- `quem_somos/`: Diretório contendo os arquivos referentes à página quem somos.
+- `contato/`: Diretório contendo os arquivos referentes à página contato
+- `admin/`: Diretório contendo os arquivos referentes as funções de admnistrador (CRUD)
 
 ## Licença
 
@@ -81,7 +85,7 @@ Contribuições são bem-vindas. Sinta-se à vontade para fazer um fork do repos
 
 - [João Paulo]: Instrutor de Programação Web Back-End.
 
-- [Otávio Neto](www.linkedin.com/otávio-neto12): Autor.
+- [Otávio Neto]: Autor.
 
 
 ---
