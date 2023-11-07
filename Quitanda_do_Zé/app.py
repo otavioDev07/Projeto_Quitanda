@@ -18,8 +18,6 @@ def verifica_sessao():
     else:
         return False
     
-
-
 if session:
     session.clear()
     
