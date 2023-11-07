@@ -42,12 +42,12 @@ Para configurar e executar o projeto em sua máquina local, siga estas etapas:
 
 
 1. **Clone o Repositório**:
-   1. git clone https://github.com/seu-usuario/projeto-quintanda.git
+   1. git clone https://github.com/otavioDev07/Projeto-Quintanda.git
    2. cd projeto-quintanda
 2. **Instale Dependências**:
    1. Em seu console digite o comando: 'pip install Flask'
 3. **Execute o Aplicativo**:
-   1. python main.py
+   1. python app.py
 4. **Acesse o Aplicativo no Navegador**:
    1. Abra um navegador da web e acesse `http://localhost:5000` para visualizar o aplicativo.
 
@@ -80,6 +80,8 @@ Contribuições são bem-vindas. Sinta-se à vontade para fazer um fork do repos
 
 
 - [João Paulo]: Instrutor de Programação Web Back-End.
+
+- [Otávio Neto](www.linkedin.com/otávio-neto12): Autor.
 
 
 ---
