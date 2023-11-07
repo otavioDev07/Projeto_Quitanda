@@ -3,5 +3,5 @@ CREATE TABLE IF NOT EXISTS produtos (
     nome TEXT NOT NULL,
     descricao TEXT NOT NULL,
     preco DECIMAL(10,2) NOT NULL,
-    imagem TEXT NOT NULL
+    img TEXT NOT NULL
 );  
