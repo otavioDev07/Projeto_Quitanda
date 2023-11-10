@@ -2,69 +2,62 @@
 
 {% block botao %}
 
-<a href="/"><button type="submit" class="btn btn-light me-4">Voltar</button></a>
+<a href=""><button type="submit" class="btn btn-light me-4">Voltar</button></a>
 
 {% endblock %}
 
 {% block conteudo %}
+    {% if not login %}
+        <div id="login" class="d-flex flex-column align-items-center col-8 mx-auto mt-5">
+            <form action="/acesso" method="post" class="d-flex w-50 flex-column needs-validation" novalidate>
+                <h2 class="display-5 text-center">Acesso do administrador</h2>
+                <div class="form-floating mb-3">
+                    <label for="usuario">Usuário:</label>
+                    <input type="text" name="usuario" id="usuario" class="form-control mt-5" autofocus required>
+                    <div class="invalid-feedback">Você deve informar o nome do usuário</div>
+                </div>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <form action="/entrar" method="post" enctype="multipart/form-data" class="form-main text-center col-10 col-md-8 col-lg-6 needs-validation" novalidate>
-            <h2 style="margin: 5% 0 5% 0;">Login:</h2>
-    
-            <div class="form-floating">
-                <input type="text" name="nome" id="nome" class="form-control" placeholder="" autofocus required><br><br>
-                <label for="nome">Nome de usuário</label><br>
-                <div class="invalid-feedback">Você deve informar o nome de usuário</div>
-            </div>
+                <div class="form-floating mb-3">
+                    <label for="senha">Senha:</label>
+                    <input type="password" name="senha" id="senha" class="form-control mt-5" required>
+                    <div class="invalid-feedback">Você deve informar a senha do usuário</div>
+                </div>
 
-            <div class="form-floating">
-                <input type="password" name="senha" id="senha" class="form-control" placeholder="" autofocus required><br><br>
-                <label for="nome">Senha</label><br>
-                <div class="invalid-feedback">Você deve informar a senha de usuário</div>
-            </div>
-    
-            
-            
-            <div class="form-check-label text-danger text-center">
-                <p>{{msg}}</p>
-            </div>
+                <div class="form-check-label text-danger text-center">
+                    <p>{{msg}}</p>
+                </div>
 
-            
-            <button class="btn btn-info btn-lg mb-5" type="submit">ENTRAR</button>
-
-            <div class="text-center">
                 <div class="form-check mb-3 d-flex justify-content-start">
-                <input type="checkbox" class="form-check-input border border-black border-1" name="chklembrar" id="chklembrar">
-                <label for="chklembrar" class="form-check-label ms-3">
-                    Lembrar de mim
-                </label>
-            </div>
-            <p class="mt-3">Esqueceu sua senha? <a href="/recuperarsenha.html"> Clique aqui </a> para se recuperá-la.</p>
-            </div>
-        </form>
-    </div>
-</div>
+                    <input class="form-check-input border border-black border-1" type="checkbox" name="chkLembrar" id="chkLembrar">
+                    <label for="chkLembrar" class="form-check-label ms-3">Lembrar de mim</label>
+                </div>
+                <input type="submit" value="Entrar" name="ACESSO" class="w-25 mx-auto btn btn-md btn-success text-light fs-3 p-auto">
+                <p class="mt-3">Esqueceu a senha? <a href="/recuperarsenha.html">Clique aqui</a> para recuperá-la.</p>
+            </form>
+        </div>
 
+    {% else %}
+        <h2 class="display-1 text-center">O administrador já está logado!</h2>
+    {% endif %}
+    <script>
+        // Exemplo de JavaScript inicial para desabilitar envios de formulários se houver campos inválidos
+        (() => {
+            'use strict'
+        
+            // Busque todos os formulários aos quais queremos aplicar estilos de validação personalizados do Bootstrap
+            const forms = document.querySelectorAll('.needs-validation')
+        
+            // Passe por cima deles e evite o envio
+            Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+        
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+    </script>
 {% endblock %}
-
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
-
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()

@@ -2,7 +2,9 @@ from flask import Flask, render_template, Blueprint, redirect, session
 
 session_blueprint = Blueprint('session', __name__, template_folder='templates')
 
-logado = True
+logado = False
+usuario = 'adm'
+senha = '1234'
 
 def verifica_sessao():
     if 'login' in session and session['login']: #Confirma se o indíce existe
@@ -24,3 +26,4 @@ def logoff():
     session['login'] = False
     session.clear()
     return redirect('/')
+

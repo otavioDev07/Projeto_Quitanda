@@ -13,31 +13,6 @@ app.register_blueprint(admin_blueprint)
 app.register_blueprint(modelo_blueprint)
 app.register_blueprint(database_blueprint)
 
-usuario = 'adm'
-senha = '1234'
-logado = True
-
-def verifica_sessao():
-    if 'login' in session and session['login']: #Confirma se o indíce existe
-        return True
-    else:
-        return False
-    
-if session:
-    session.clear()
-
-
-@app.route("/login")
-def login():
-    titulo = 'LOGIN'
-    return render_template('login.html', titulo=titulo)
-
-@app.route("/logoff")
-def logoff():
-   global logado
-   logado = False
-   session.clear()
-   return redirect('/')
 
 if __name__ == '__main__': # garante que o código dentro dele só será executado se este script estiver sendo executado diretamente como o programa principal.
     app.run(debug=True)
