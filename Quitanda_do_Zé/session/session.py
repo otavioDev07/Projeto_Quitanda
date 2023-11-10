@@ -2,7 +2,7 @@ from flask import Flask, render_template, Blueprint, redirect, session
 
 session_blueprint = Blueprint('session', __name__, template_folder='templates')
 
-logado = False
+login = False
 usuario = 'adm'
 senha = '1234'
 
@@ -23,7 +23,9 @@ def login():
 
 @session_blueprint.route("/logoff")
 def logoff():
-    session['login'] = False
+    global login
+    login = False
     session.clear()
+    print('DEU CERTO')
     return redirect('/')
 

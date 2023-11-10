@@ -7,15 +7,15 @@ home_blueprint = Blueprint('home', __name__, template_folder='templates')
 
 @home_blueprint.route("/")
 def index():
-    global logado
+    global verifica_sessao
     iniciar_db()
     conexao = get_db_conexao()
     produtos = conexao.execute('SELECT * FROM produtos ORDER BY id DESC').fetchall()
     conexao.close() 
+    titulo = 'PÁGINA INICIAL'
     #Verifica a sessão
     if verifica_sessao():
-        logado = True
+        login = True
     else:
-        logado = False
-    titulo = 'PÁGINA INICIAL'
-    return render_template('index.html', titulo=titulo)
+        login = False
+    return render_template('index.html', titulo=titulo, produtos=produtos, login=login)

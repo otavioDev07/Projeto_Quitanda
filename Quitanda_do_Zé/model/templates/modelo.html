@@ -67,7 +67,11 @@
                         <br>
                         Trocas e Devoluções
                         <br>
+                        {% if login %}
+                        <a href="/adm" style="text-decoration: none;">Área do Admnistrador</a>
+                        {% else %}
                         <a href="/login" style="text-decoration: none;">Área do Admnistrador</a>
+                        {% endif %}
                     </div>
                     <div class="col-12 col-md-4 col-sm-6 text-center text-light">
                         Contato pelo Site
