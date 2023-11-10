@@ -37,8 +37,8 @@
                         <form class="d-flex" role="search">
                             {% block botao %}
                             {% endblock %}
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                            <button class="btn btn-danger" type="submit">Search</button>
+                            <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" aria-label="Search">
+                            <button class="btn btn-danger" type="submit" onclick="widnow.location.href('/busca')">Search</button>
                         </form>
                     </div>
                 </div>

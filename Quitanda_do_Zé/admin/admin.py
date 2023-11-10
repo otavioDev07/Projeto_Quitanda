@@ -68,6 +68,54 @@ def cadastro():
     else:
         return redirect('/login')
     
-
-
+#Rota para exclusão
+@admin_blueprint.route('/excluir/<id>')
+def excluir(id):
+    if verifica_sessao():
+        id = int(id)
+        conexao = get_db_conexao()
+        conexao.execute('DELETE FROM produtos WHERE id = ?', (id,))
+        conexao.commit()
+        conexao.close()
+        return redirect('/adm')
+    else:
+        return redirect('/login')
     
+#Rota para chamar a página de edição
+@admin_blueprint.route('/editprodutos/<id>')
+def editar(id):
+    if verifica_sessao():
+        iniciar_db()
+        conexao = get_db_conexao()
+        produtos = conexao.execute('SELECT FROM produtos WHERE id = ?', (id,)).fetchall()
+        conexao.close()
+        title = 'Edição de Produtos'
+        return render_template('editprodutos.html', produtos=produtos, title=title)
+    else:
+        return redirect('/login')
+
+#Rota para editar
+@admin_blueprint.route('/editarprodutos', methods=['POST'])
+def editar():
+    id = request.form['id']
+    nome = request.form['nome']
+    descricao = request.form['descricao']
+    preco = request.form['preco']
+    img = request.files['img']
+    id_img = str(uuid.uuid4().hex)
+    filename = id_img+nome+'.png'
+    img.save('../../static/img/produtos')
+    conexao = get_db_conexao()
+    conexao.execute('UPDATE produtos SET nome = ?, descricao = ?, preco = ?, img = ? WHERE id = ?', (nome, descricao, preco, filename, id))
+    conexao.commit()
+    conexao.close()
+    return redirect('/adm')
+
+#Rota de busca
+@admin_blueprint.route('/busca')
+def busca():
+    busca = request.form['busca']
+    conexao = get_db_conexao()
+    produtos = conexao.execute('SELECT * FROM produtos WHERE nome LIKE "%" || ? || "%"', (busca,)).fetchall()
+    title = 'QUITANDA DO ZÉ'
+    return render_template('index.html', title=title, produtos=produtos)    

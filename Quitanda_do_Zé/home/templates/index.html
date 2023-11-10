@@ -10,44 +10,49 @@
 
 {% endblock %}
 
-
 {% block conteudo %}
+
+{% if not produtos %}
+<h1 class="display-5 text-center text-danger">Estamos preparando as promoções da semana...</h1>
+<h2 class="display-4 text-center text-sucess">Retorne em breve.</h2>
+{% else %}
+
 <!-- Carrossel automático -->
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="5000">
-            <img src="../../static/img/slides/slide01.jpg" class="d-block w-100" alt="...">
+            <img src="../../static/img/slides/slide01.jpg" class="d-block w-100">
         </div>
         <div class="carousel-item" data-bs-interval="5000">
-            <img src="../../static/img/slides/slide02.jpg" class="d-block w-100" alt="...">
+            <img src="../../static/img/slides/slide02.jpg" class="d-block w-100">
         </div>
         <div class="carousel-item" data-bs-interval="5000">
-            <img src="../../static/img/slides/slide03.jpg" class="d-block w-100" alt="...">
+            <img src="../../static/img/slides/slide03.jpg" class="d-block w-100">
         </div>
     </div>
 </div>
 <!-- Fim do carrossel -->
-<!-- Cards -->
+
 
 <div class="container-fluid my-5">
     <h1 class="text-center">Promoções da Semana</h1>
 </div>
-
+<!-- Cards -->
 <div class="container">
-    <div class="row g-5">
-        <div class="col-12 col-xl-3 col-md-6">
+    <div class="row g-3">
+        {% for produto in produtos %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <div class="card text-bg-light border-primary">
-                <img src="../../static/img/produtos/000001.jpg" class="card-img-top b-2">
+                <img src="../../static/img/produtos/{{produto['img']}}" class="card-img-top b-2">
                 <div class="card-body">
-                    <p class="card-title text-center fw-bolder fs-4">Banana nana</p>
-                    <p class="card-text text-center">Some quick example text to build on the card title and make up the
-                        bulk
-                        of the card's content.</p>
-                    <p class="text-center fw-bolder fs-4">R$ 4,99</p>
+                    <p class="card-title text-center fw-bolder fs-4">{{produto['nome']}}</p>
+                    <p class="card-text text-center">{{produto['descricao']}}</p>
+                    <p class="text-center fw-bolder fs-4">{{produto['preco']}}</p>
                 </div>
             </div>
         </div>
-
+        {% endfor %}
     </div>
 </div>
+<!-- Fim dos cards -->
 {% endblock %}
