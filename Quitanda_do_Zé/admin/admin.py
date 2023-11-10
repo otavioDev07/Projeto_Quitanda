@@ -58,8 +58,8 @@ def cadastro():
         preco = request.form['preco']
         img = request.files['img']
         id_img = str(uuid.uuid4().hex)
-        filename = id_img+nome+'.png'
-        img.save('../../static/img/produtos')
+        filename = id_img + nome + '.png'
+        img.save('../../static/img/produtos/'+filename)
         conexao = get_db_conexao()
         conexao.execute('INSERT INTO produtos (nome, descricao, preco, img) VALUES (?, ?, ?, ?)', (nome, descricao, preco, filename))
         conexao.commit()
@@ -83,7 +83,7 @@ def excluir(id):
     
 #Rota para chamar a página de edição
 @admin_blueprint.route('/editprodutos/<id>')
-def editar(id):
+def chamar_editar(id):
     if verifica_sessao():
         iniciar_db()
         conexao = get_db_conexao()
@@ -104,7 +104,7 @@ def editar():
     img = request.files['img']
     id_img = str(uuid.uuid4().hex)
     filename = id_img+nome+'.png'
-    img.save('../../static/img/produtos')
+    img.save('../../static/img/produtos'+filename)
     conexao = get_db_conexao()
     conexao.execute('UPDATE produtos SET nome = ?, descricao = ?, preco = ?, img = ? WHERE id = ?', (nome, descricao, preco, filename, id))
     conexao.commit()
