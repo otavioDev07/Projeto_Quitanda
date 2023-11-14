@@ -74,9 +74,13 @@ def cadastro():
 #Rota para exclusão
 @admin_blueprint.route('/excluir/<id>')
 def excluir(id):
+    global img
     if verifica_sessao():
         id = int(id)
         conexao = get_db_conexao()
+        imagem = conexao.execute('SELECT img FROM produtos WHERE id = ?', (id,)).fetchone()
+        caminho_imagem = os.path.join('static/img/produtos', imagem['img'])
+        os.remove(caminho_imagem)
         conexao.execute('DELETE FROM produtos WHERE id = ?', (id,))
         conexao.commit()
         conexao.close()
