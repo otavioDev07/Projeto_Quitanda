@@ -50,7 +50,7 @@ def cadprodutos():
         return redirect('/login')
     
 #Rota para cadastro no database
-@admin_blueprint.route('/cadastro', methods=['post'])
+@admin_blueprint.route('/cadastro',methods=["post"])
 def cadastro():
     if verifica_sessao():
         nome = request.form['nome']
@@ -59,7 +59,7 @@ def cadastro():
         img = request.files['img']
         id_img = str(uuid.uuid4().hex)
         filename = id_img + nome + '.png'
-        img.save('../static/img/produtos/'+filename)
+        img.save('../static/img/produtos/'+filename) ##O PROBLEMA
         conexao = get_db_conexao()
         conexao.execute('INSERT INTO produtos (nome, descricao, preco, img) VALUES (?, ?, ?, ?)', (nome, descricao, preco, filename))
         conexao.commit()
@@ -95,7 +95,7 @@ def chamar_editar(id):
         return redirect('/login')
 
 #Rota para editar
-@admin_blueprint.route('/editarprodutos', methods=['POST'])
+@admin_blueprint.route('/editarprodutos', methods=['post'])
 def editar():
     id = request.form['id']
     nome = request.form['nome']
@@ -104,7 +104,7 @@ def editar():
     img = request.files['img']
     id_img = str(uuid.uuid4().hex)
     filename = id_img+nome+'.png'
-    img.save('../static/img/produtos'+filename)
+    img.save('../static/img/produtos'+filename) ## O PROBLEMA
     conexao = get_db_conexao()
     conexao.execute('UPDATE produtos SET nome = ?, descricao = ?, preco = ?, img = ? WHERE id = ?', (nome, descricao, preco, filename, id))
     conexao.commit()

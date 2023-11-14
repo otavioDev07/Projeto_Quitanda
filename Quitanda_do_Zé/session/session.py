@@ -26,6 +26,5 @@ def logoff():
     global login
     login = False
     session.clear()
-    print('DEU CERTO')
     return redirect('/')
 
