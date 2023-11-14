@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, redirect
+from flask import Flask
 from quem_somos.quem_somos import quemsomos_blueprint
 from home.home import home_blueprint
 from admin.admin import admin_blueprint

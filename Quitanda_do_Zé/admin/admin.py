@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint, request, redirect, session
+from flask import render_template, Blueprint, request, redirect, session
 from session.session import verifica_sessao
 from database.conexao import iniciar_db, get_db_conexao 
 import uuid
@@ -59,7 +59,7 @@ def cadastro():
         img = request.files['img']
         id_img = str(uuid.uuid4().hex)
         filename = id_img + nome + '.png'
-        img.save('../static/img/produtos/'+filename) ##O PROBLEMA
+        img.save('static/img/produtos/'+filename) ##O PROBLEMA
         conexao = get_db_conexao()
         conexao.execute('INSERT INTO produtos (nome, descricao, preco, img) VALUES (?, ?, ?, ?)', (nome, descricao, preco, filename))
         conexao.commit()
@@ -87,7 +87,7 @@ def chamar_editar(id):
     if verifica_sessao():
         iniciar_db()
         conexao = get_db_conexao()
-        produtos = conexao.execute('SELECT FROM produtos WHERE id = ?', (id,)).fetchall()
+        produtos = conexao.execute('SELECT * FROM produtos WHERE id = ?', (id,)).fetchall()
         conexao.close()
         title = 'Edição de Produtos'
         return render_template('editprodutos.html', produtos=produtos, title=title)
@@ -104,7 +104,7 @@ def editar():
     img = request.files['img']
     id_img = str(uuid.uuid4().hex)
     filename = id_img+nome+'.png'
-    img.save('../static/img/produtos'+filename) ## O PROBLEMA
+    img.save('static/img/produtos/'+filename) ##O PROBLEMA
     conexao = get_db_conexao()
     conexao.execute('UPDATE produtos SET nome = ?, descricao = ?, preco = ?, img = ? WHERE id = ?', (nome, descricao, preco, filename, id))
     conexao.commit()
