@@ -34,11 +34,11 @@
                                     Somos</a>
                             </li>
                         </ul>
-                        <form class="d-flex" role="search">
+                        <form class="d-flex" role="search" method="POST" action="/busca">
                             {% block botao %}
                             {% endblock %}
                             <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar" aria-label="Search">
-                            <button class="btn btn-danger" type="submit" onclick="widnow.location.href('/busca')">Search</button>
+                            <button class="btn btn-danger" type="submit">Search</button>
                         </form>
                     </div>
                 </div>

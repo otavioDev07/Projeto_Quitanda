@@ -2,6 +2,7 @@ from flask import render_template, Blueprint, request, redirect, session
 from session.session import verifica_sessao
 from database.conexao import iniciar_db, get_db_conexao 
 import uuid, os
+from werkzeug.utils import secure_filename
 
 usuario = 'adm'
 senha = '1234'
@@ -58,10 +59,12 @@ def cadastro():
         preco = request.form['preco']
         img = request.files['img']
         id_img = str(uuid.uuid4().hex)
-        filename = id_img + nome + '.png'
-        img.save('static/img/produtos/'+filename) ##O PROBLEMA
+        filename = secure_filename(img.filename)
+        novo_nome = f"{id_img}_{filename}"
+        caminho_imagem = os.path.join('static/img/produtos', novo_nome)
+        img.save(caminho_imagem)
         conexao = get_db_conexao()
-        conexao.execute('INSERT INTO produtos (nome, descricao, preco, img) VALUES (?, ?, ?, ?)', (nome, descricao, preco, filename))
+        conexao.execute('INSERT INTO produtos (nome, descricao, preco, img) VALUES (?, ?, ?, ?)', (nome, descricao, preco, novo_nome))
         conexao.commit()
         conexao.close()
         return redirect('/adm')
@@ -94,27 +97,38 @@ def chamar_editar(id):
     else:
         return redirect('/login')
 
-#Rota para editar
-@admin_blueprint.route('/editarprodutos', methods=['post'])
+@admin_blueprint.route('/editarprodutos', methods=['POST'])
 def editar():
     id = request.form['id']
     nome = request.form['nome']
     descricao = request.form['descricao']
     preco = request.form['preco']
     img = request.files['img']
-    id_img = str(uuid.uuid4().hex)
-    filename = id_img+nome+'.png'
-    img.save('static/img/produtos/'+filename) #(usar OS)
     conexao = get_db_conexao()
-    conexao.execute('UPDATE produtos SET nome = ?, descricao = ?, preco = ?, img = ? WHERE id = ?', (nome, descricao, preco, filename, id))
+    if img:
+        id_img = str(uuid.uuid4().hex)
+        filename = secure_filename(img.filename) #Usa o nome original da imagem com o ID único gerado
+        novo_nome = f"{id_img}_{filename}.png"
+        caminho_imagem = os.path.join('static/img/produtos', novo_nome)
+        imagem_antiga = conexao.execute('SELECT img FROM produtos WHERE id = ?', (id,)).fetchone() # Remove a imagem antiga, se existir
+        if imagem_antiga:
+            caminho_imagem_antiga = os.path.join('static/img/produtos', imagem_antiga['img'])
+            if os.path.exists(caminho_imagem_antiga):
+                os.remove(caminho_imagem_antiga)
+        img.save(caminho_imagem)
+    else:
+        novo_nome = conexao.execute('SELECT img FROM produtos WHERE id = ?', (id,)).fetchone()['img'] # Se nenhuma nova imagem for enviada, mantém a imagem existente
+
+    # Atualiza os outros campos no banco de dados
+    conexao.execute('UPDATE produtos SET nome = ?, descricao = ?, preco = ?, img = ? WHERE id = ?', (nome, descricao, preco, novo_nome, id))
     conexao.commit()
     conexao.close()
     return redirect('/adm')
 
 #Rota de busca
-@admin_blueprint.route('/busca')
+@admin_blueprint.route('/busca', methods=['post'])
 def busca():
-    busca = request.form['busca']
+    busca = request.form['buscar']
     conexao = get_db_conexao()
     produtos = conexao.execute('SELECT * FROM produtos WHERE nome LIKE "%" || ? || "%"', (busca,)).fetchall()
     title = 'QUITANDA DO ZÉ'
