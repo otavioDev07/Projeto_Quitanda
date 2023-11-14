@@ -104,7 +104,7 @@ def editar():
     img = request.files['img']
     id_img = str(uuid.uuid4().hex)
     filename = id_img+nome+'.png'
-    img.save('static/img/produtos/'+filename) ##O PROBLEMA (usar OS)
+    img.save('static/img/produtos/'+filename) #(usar OS)
     conexao = get_db_conexao()
     conexao.execute('UPDATE produtos SET nome = ?, descricao = ?, preco = ?, img = ? WHERE id = ?', (nome, descricao, preco, filename, id))
     conexao.commit()
