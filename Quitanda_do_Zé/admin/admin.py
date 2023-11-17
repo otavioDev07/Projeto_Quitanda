@@ -60,7 +60,7 @@ def cadastro():
         img = request.files['img']
         id_img = str(uuid.uuid4().hex)
         filename = secure_filename(img.filename)
-        novo_nome = f"{id_img}_{filename}"
+        novo_nome = f"{id_img}_{filename}.png"
         caminho_imagem = os.path.join('static/img/produtos', novo_nome)
         img.save(caminho_imagem)
         conexao = get_db_conexao()
