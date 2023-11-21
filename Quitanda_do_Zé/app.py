@@ -17,4 +17,4 @@ app.register_blueprint(session_blueprint)
 
 
 if __name__ == '__main__': # garante que o código dentro dele só será executado se este script estiver sendo executado diretamente como o programa principal.
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
